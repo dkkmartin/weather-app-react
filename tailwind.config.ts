@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,13 +8,56 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        labeldarkprimary: 'var(--labeldarkprimary)',
+        labeldarkquaternary: 'var(--labeldarkquaternary)',
+        labeldarksecondary: 'var(--labeldarksecondary)',
+        labeldarktertiary: 'var(--labeldarktertiary)',
+        labellightprimary: 'var(--labellightprimary)',
+        labellightquaternary: 'var(--labellightquaternary)',
+        labellightsecondary: 'var(--labellightsecondary)',
+        labellighttertiary: 'var(--labellighttertiary)',
+        'weather-colorsolid1': 'var(--weather-colorsolid1)',
+        'weather-colorsolid2': 'var(--weather-colorsolid2)',
+        'weather-colorsolid3': 'var(--weather-colorsolid3)',
+        'weather-colorsolid4': 'var(--weather-colorsolid4)',
+      },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-linear-darkpurple': 'var(--gradient-linear-darkpurple)',
+        'gradient-linear-purple': 'var(--gradient-linear-purple)',
+        'gradient-linear-bluepurple': 'var(--gradient-linear-bluepurple)',
+        'radient-linear-bluesplit': 'var(--radient-linear-bluesplit)',
+        'gradient-radial': 'var(--gradient-radial)',
+        'gradient-angular': 'var(--gradient-angular)',
+        'homepage-background': 'var(--homepage-background-src)',
+        'image-ellipse2': 'var(--image-plus-src)',
+      },
+      fontFamily: {
+        'default-bold-body': 'var(--default-bold-body-font-family)',
+        'default-bold-callout': 'var(--default-bold-callout-font-family)',
+        'default-bold-caption1': 'var(--default-bold-caption1-font-family)',
+        'default-bold-caption2': 'var(--default-bold-caption2-font-family)',
+        'default-bold-footnote': 'var(--default-bold-footnote-font-family)',
+        'default-bold-headline': 'var(--default-bold-headline-font-family)',
+        'default-bold-largetitle': 'var(--default-bold-largetitle-font-family)',
+        'default-bold-subheadline': 'var(--default-bold-subheadline-font-family)',
+        'default-bold-title1': 'var(--default-bold-title1-font-family)',
+        'default-bold-title2': 'var(--default-bold-title2-font-family)',
+        'default-bold-title3': 'var(--default-bold-title3-font-family)',
+        'default-regular-body': 'var(--default-regular-body-font-family)',
+        'default-regular-callout': 'var(--default-regular-callout-font-family)',
+        'default-regular-caption1': 'var(--default-regular-caption1-font-family)',
+        'default-regular-caption2': 'var(--default-regular-caption2-font-family)',
+        'default-regular-footnote': 'var(--default-regular-footnote-font-family)',
+        'default-regular-headline': 'var(--default-regular-headline-font-family)',
+        'default-regular-largetitle': 'var(--default-regular-largetitle-font-family)',
+        'default-regular-subheadline': 'var(--default-regular-subheadline-font-family)',
+        'default-regular-title1': 'var(--default-regular-title1-font-family)',
+        'default-regular-title2': 'var(--default-regular-title2-font-family)',
+        'default-regular-title3': 'var(--default-regular-title3-font-family)',
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

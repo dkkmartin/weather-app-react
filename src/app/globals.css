@@ -1,27 +1,169 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .all-\[unset\] {
+    all: unset;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+:root {
+  --default-bold-body-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-bold-body-font-size: 17px;
+  --default-bold-body-font-style: normal;
+  --default-bold-body-font-weight: 400;
+  --default-bold-body-letter-spacing: -0.40799999237060547px;
+  --default-bold-body-line-height: 22px;
+  --default-bold-callout-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-bold-callout-font-size: 16px;
+  --default-bold-callout-font-style: normal;
+  --default-bold-callout-font-weight: 400;
+  --default-bold-callout-letter-spacing: -0.3199999928474426px;
+  --default-bold-callout-line-height: 21px;
+  --default-bold-caption1-font-family: 'SFPro Text-Medium', Helvetica;
+  --default-bold-caption1-font-size: 12px;
+  --default-bold-caption1-font-style: normal;
+  --default-bold-caption1-font-weight: 500;
+  --default-bold-caption1-letter-spacing: 0px;
+  --default-bold-caption1-line-height: 16px;
+  --default-bold-caption2-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-bold-caption2-font-size: 11px;
+  --default-bold-caption2-font-style: normal;
+  --default-bold-caption2-font-weight: 400;
+  --default-bold-caption2-letter-spacing: 0.05999999865889549px;
+  --default-bold-caption2-line-height: 13px;
+  --default-bold-footnote-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-bold-footnote-font-size: 13px;
+  --default-bold-footnote-font-style: normal;
+  --default-bold-footnote-font-weight: 400;
+  --default-bold-footnote-letter-spacing: -0.07800000160932541px;
+  --default-bold-footnote-line-height: 18px;
+  --default-bold-headline-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-bold-headline-font-size: 17px;
+  --default-bold-headline-font-style: normal;
+  --default-bold-headline-font-weight: 400;
+  --default-bold-headline-letter-spacing: -0.40799999237060547px;
+  --default-bold-headline-line-height: 22px;
+  --default-bold-largetitle-font-family: 'SFPro Display-Bold', Helvetica;
+  --default-bold-largetitle-font-size: 34px;
+  --default-bold-largetitle-font-style: normal;
+  --default-bold-largetitle-font-weight: 700;
+  --default-bold-largetitle-letter-spacing: 0.37400001287460327px;
+  --default-bold-largetitle-line-height: 41px;
+  --default-bold-subheadline-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-bold-subheadline-font-size: 15px;
+  --default-bold-subheadline-font-style: normal;
+  --default-bold-subheadline-font-weight: 400;
+  --default-bold-subheadline-letter-spacing: -0.5px;
+  --default-bold-subheadline-line-height: 20px;
+  --default-bold-title1-font-family: 'SFPro Display-Bold', Helvetica;
+  --default-bold-title1-font-size: 28px;
+  --default-bold-title1-font-style: normal;
+  --default-bold-title1-font-weight: 700;
+  --default-bold-title1-letter-spacing: 0.36000001430511475px;
+  --default-bold-title1-line-height: normal;
+  --default-bold-title2-font-family: 'SFPro Display-Semibold', Helvetica;
+  --default-bold-title2-font-size: 20px;
+  --default-bold-title2-font-style: normal;
+  --default-bold-title2-font-weight: 400;
+  --default-bold-title2-letter-spacing: 0.3799999952316284px;
+  --default-bold-title2-line-height: 24px;
+  --default-bold-title3-font-family: 'SFPro Display-Semibold', Helvetica;
+  --default-bold-title3-font-size: 20px;
+  --default-bold-title3-font-style: normal;
+  --default-bold-title3-font-weight: 400;
+  --default-bold-title3-letter-spacing: 0.3799999952316284px;
+  --default-bold-title3-line-height: 24px;
+  --default-regular-body-font-family: 'SFPro Text-Regular', Helvetica;
+  --default-regular-body-font-size: 17px;
+  --default-regular-body-font-style: normal;
+  --default-regular-body-font-weight: 400;
+  --default-regular-body-letter-spacing: -0.40799999237060547px;
+  --default-regular-body-line-height: 22px;
+  --default-regular-callout-font-family: 'SFPro Text-Regular', Helvetica;
+  --default-regular-callout-font-size: 16px;
+  --default-regular-callout-font-style: normal;
+  --default-regular-callout-font-weight: 400;
+  --default-regular-callout-letter-spacing: -0.3199999928474426px;
+  --default-regular-callout-line-height: 21px;
+  --default-regular-caption1-font-family: 'SFPro Text-Regular', Helvetica;
+  --default-regular-caption1-font-size: 12px;
+  --default-regular-caption1-font-style: normal;
+  --default-regular-caption1-font-weight: 400;
+  --default-regular-caption1-letter-spacing: 0px;
+  --default-regular-caption1-line-height: 16px;
+  --default-regular-caption2-font-family: 'SFPro Text-Regular', Helvetica;
+  --default-regular-caption2-font-size: 11px;
+  --default-regular-caption2-font-style: normal;
+  --default-regular-caption2-font-weight: 400;
+  --default-regular-caption2-letter-spacing: 0.06599999964237213px;
+  --default-regular-caption2-line-height: 13px;
+  --default-regular-footnote-font-family: 'SFPro Text-Regular', Helvetica;
+  --default-regular-footnote-font-size: 13px;
+  --default-regular-footnote-font-style: normal;
+  --default-regular-footnote-font-weight: 400;
+  --default-regular-footnote-letter-spacing: -0.07800000160932541px;
+  --default-regular-footnote-line-height: 18px;
+  --default-regular-headline-font-family: 'SFPro Text-Semibold', Helvetica;
+  --default-regular-headline-font-size: 17px;
+  --default-regular-headline-font-style: normal;
+  --default-regular-headline-font-weight: 400;
+  --default-regular-headline-letter-spacing: -0.40799999237060547px;
+  --default-regular-headline-line-height: 22px;
+  --default-regular-largetitle-font-family: 'SFPro Display-Regular', Helvetica;
+  --default-regular-largetitle-font-size: 34px;
+  --default-regular-largetitle-font-style: normal;
+  --default-regular-largetitle-font-weight: 400;
+  --default-regular-largetitle-letter-spacing: 0.37400001287460327px;
+  --default-regular-largetitle-line-height: 41px;
+  --default-regular-subheadline-font-family: 'SFPro Text-Regular', Helvetica;
+  --default-regular-subheadline-font-size: 15px;
+  --default-regular-subheadline-font-style: normal;
+  --default-regular-subheadline-font-weight: 400;
+  --default-regular-subheadline-letter-spacing: -0.23999999463558197px;
+  --default-regular-subheadline-line-height: 20px;
+  --default-regular-title1-font-family: 'SFPro Display-Regular', Helvetica;
+  --default-regular-title1-font-size: 28px;
+  --default-regular-title1-font-style: normal;
+  --default-regular-title1-font-weight: 400;
+  --default-regular-title1-letter-spacing: 0.36399999260902405px;
+  --default-regular-title1-line-height: 34px;
+  --default-regular-title2-font-family: 'SFPro Display-Regular', Helvetica;
+  --default-regular-title2-font-size: 22px;
+  --default-regular-title2-font-style: normal;
+  --default-regular-title2-font-weight: 400;
+  --default-regular-title2-letter-spacing: 0.3499999940395355px;
+  --default-regular-title2-line-height: 28px;
+  --default-regular-title3-font-family: 'SFPro Display-Regular', Helvetica;
+  --default-regular-title3-font-size: 20px;
+  --default-regular-title3-font-style: normal;
+  --default-regular-title3-font-weight: 400;
+  --default-regular-title3-letter-spacing: 0.3799999952316284px;
+  --default-regular-title3-line-height: 24px;
+  --labeldarkprimary: rgba(255, 255, 255, 1);
+  --labeldarkquaternary: rgba(235, 235, 245, 0.18);
+  --labeldarksecondary: rgba(235, 235, 245, 0.6);
+  --labeldarktertiary: rgba(235, 235, 245, 0.3);
+  --labellightprimary: rgba(0, 0, 0, 1);
+  --labellightquaternary: rgba(60, 60, 67, 0.18);
+  --labellightsecondary: rgba(60, 60, 67, 0.6);
+  --labellighttertiary: rgba(60, 60, 67, 0.3);
+  --weather-colorsolid1: rgba(72, 49, 157, 1);
+  --weather-colorsolid2: rgba(31, 29, 71, 1);
+  --weather-colorsolid3: rgba(196, 39, 251, 1);
+  --weather-colorsolid4: rgba(224, 217, 255, 1);
+  --gradient-linear-darkpurple: linear-gradient(168deg, #2e335a -4.68%, #1c1b33 95.45%);
+  --gradient-linear-purple: linear-gradient(90deg, #5936b4 0%, #362a84 103.55%);
+  --gradient-linear-bluepurple: linear-gradient(90deg, #427bd1 1.95%, #c159ec 101.56);
+  --gradient-linear-bluesplit: linear-gradient(180deg, #aec9ff 0%, #aec9ff 54.51%, #083072 54.52%);
+  --gradient-radial: radial-gradient(103.89% 121.8% at 34.94% 108.33%, #f7cbfd 0%, #7758d1 100%);
+  --gradient-angular: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(97, 47, 171, 0) 50.017388463020325deg,
+    #612fab 129.55134987831116deg,
+    rgba(97, 47, 171, 0) 226.05700492858887deg,
+    #612fab 269.28977251052856deg
+  );
+  --image-ellipse2-src: url('../assets/ellipse-2.svg');
+  --homepage-background-src: url('../assets/homepage-bg.png');
 }
