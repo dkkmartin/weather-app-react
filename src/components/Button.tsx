@@ -1,9 +1,9 @@
 import '@/app/globals.css';
 import React from 'react';
 import Image from 'next/image';
-import ellipseBlur from '@/assets/ellipse-blur.svg';
-import ellipseMask from '@/assets/mask.png';
-import plus from '@/assets/plus.svg';
+import ellipseBlur from '@/assets/button/ellipse-blur.svg';
+import ellipseMask from '@/assets/button/mask.png';
+import plus from '@/assets/button/plus.svg';
 
 export default function Button() {
   return (

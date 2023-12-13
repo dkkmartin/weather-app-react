@@ -7,6 +7,28 @@
   }
 }
 
+/* Font faces */
+
+@font-face {
+  font-family: 'SF Pro Regular';
+  src: url('../fonts/FontsFree-Net-SFProText-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Light';
+  src: url('../fonts/FontsFree-Net-SFProText-Light-1.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Bold';
+  src: url('../fonts/FontsFree-Net-SFProText-Bold-1.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Semibold';
+  src: url('../fonts/FontsFree-Net-SFProText-Semibold-1.ttf') format('truetype');
+}
+
 :root {
   --default-bold-body-font-family: 'SFPro Text-Semibold', Helvetica;
   --default-bold-body-font-size: 17px;
@@ -164,6 +186,6 @@
     rgba(97, 47, 171, 0) 226.05700492858887deg,
     #612fab 269.28977251052856deg
   );
-  --image-ellipse2-src: url('../assets/ellipse-2.svg');
+  --image-ellipse2-src: url('../assets/button/ellipse-2.svg');
   --homepage-background-src: url('../assets/homepage-bg.png');
 }
