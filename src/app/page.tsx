@@ -9,7 +9,7 @@ export default function Home() {
     <main className="h-[100dvh] bg-homepage-background bg-cover flex flex-col items-center">
       <Weather />
       <Image
-        className="absolute top-1/3"
+        className="absolute top-[28%]"
         src="/assets/house.png"
         alt="house image"
         width={390}
