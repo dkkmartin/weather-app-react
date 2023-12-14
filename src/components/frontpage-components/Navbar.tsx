@@ -105,12 +105,13 @@ export default function Navbar() {
       </div>
       <div className="w-screen flex">
         <Image
-          className="absolute left-8 bottom-4"
-          src="/assets/button/List.png"
-          width={44}
-          height={44}
+          className="absolute left-10 bottom-7"
+          src="/assets/button/Symbol.png"
+          width={22}
+          height={25}
           alt="Button"
         ></Image>
+
         <svg
           width="100%"
           height="89"
@@ -170,10 +171,10 @@ export default function Navbar() {
           </defs>
         </svg>
         <Image
-          className="absolute right-10 bottom-7"
-          src="/assets/button/Symbol.png"
-          width={22}
-          height={25}
+          className="absolute right-8 bottom-4"
+          src="/assets/button/List.png"
+          width={44}
+          height={44}
           alt="Button"
         ></Image>
       </div>
