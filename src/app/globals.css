@@ -10,23 +10,43 @@
 /* Font faces */
 
 @font-face {
-  font-family: 'SF Pro Regular';
-  src: url('../fonts/FontsFree-Net-SFProText-Regular.ttf') format('truetype');
+  font-family: 'SFPro Text-Medium';
+  src: url('../fonts/net-SFProText-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'SF Pro Light';
-  src: url('../fonts/FontsFree-Net-SFProText-Light-1.ttf') format('truetype');
+  font-family: 'SFPro Light';
+  src: url('../fonts/net-SFProText-Light-1.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'SF Pro Bold';
-  src: url('../fonts/FontsFree-Net-SFProText-Bold-1.ttf') format('truetype');
+  font-family: 'SFPro Display-Bold';
+  src: url('../fonts/net-SFProText-Bold-1.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'SF Pro Semibold';
-  src: url('../fonts/FontsFree-Net-SFProText-Semibold-1.ttf') format('truetype');
+  font-family: 'SFPro Text-Regular';
+  src: url('../fonts/net-SFProText-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFPro Text-Semibold';
+  src: url('../fonts/net-SFProText-Semibold-1.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFPro Display-Regular';
+  src: url('../fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+}
+
+@font-face {
+  font-family: 'SFPro Display-Bold';
+  src: url('../fonts/SFPRODISPLAYBOLD.OTF') format('opentype');
+}
+
+@font-face {
+  font-family: 'SFPro Display-Semibold';
+  src: url('../fonts/SFPRODISPLAYMEDIUM.OTF') format('opentype');
 }
 
 :root {
@@ -132,7 +152,7 @@
   --default-regular-headline-font-weight: 400;
   --default-regular-headline-letter-spacing: -0.40799999237060547px;
   --default-regular-headline-line-height: 22px;
-  --default-regular-largetitle-font-family: 'SFPro Display-Regular', Helvetica;
+  --default-regular-largetitle-font-family: 'SFPro Light', Helvetica;
   --default-regular-largetitle-font-size: 34px;
   --default-regular-largetitle-font-style: normal;
   --default-regular-largetitle-font-weight: 400;
@@ -162,6 +182,7 @@
   --default-regular-title3-font-weight: 400;
   --default-regular-title3-letter-spacing: 0.3799999952316284px;
   --default-regular-title3-line-height: 24px;
+  --extra-large-font-size: 86px;
   --labeldarkprimary: rgba(255, 255, 255, 1);
   --labeldarkquaternary: rgba(235, 235, 245, 0.18);
   --labeldarksecondary: rgba(235, 235, 245, 0.6);
@@ -186,6 +207,208 @@
     rgba(97, 47, 171, 0) 226.05700492858887deg,
     #612fab 269.28977251052856deg
   );
-  --image-ellipse2-src: url('../assets/button/ellipse-2.svg');
-  --homepage-background-src: url('../assets/homepage-bg.png');
+  --image-ellipse2-src: url('/assets/button/ellipse-2.svg');
+  --homepage-background-src: url('/assets/homepage-bg.png');
+}
+
+/* Custom classes */
+
+@layer utilities {
+  .default-bold-body {
+    font-family: var(--default-bold-body-font-family);
+    font-size: var(--default-bold-body-font-size);
+    font-style: var(--default-bold-body-font-style);
+    font-weight: var(--default-bold-body-font-weight);
+    letter-spacing: var(--default-bold-body-letter-spacing);
+    line-height: var(--default-bold-body-line-height);
+  }
+
+  .default-bold-callout {
+    font-family: var(--default-bold-callout-font-family);
+    font-size: var(--default-bold-callout-font-size);
+    font-style: var(--default-bold-callout-font-style);
+    font-weight: var(--default-bold-callout-font-weight);
+    letter-spacing: var(--default-bold-callout-letter-spacing);
+    line-height: var(--default-bold-callout-line-height);
+  }
+
+  .default-bold-caption1 {
+    font-family: var(--default-bold-caption1-font-family);
+    font-size: var(--default-bold-caption1-font-size);
+    font-style: var(--default-bold-caption1-font-style);
+    font-weight: var(--default-bold-caption1-font-weight);
+    letter-spacing: var(--default-bold-caption1-letter-spacing);
+    line-height: var(--default-bold-caption1-line-height);
+  }
+
+  .default-bold-caption2 {
+    font-family: var(--default-bold-caption2-font-family);
+    font-size: var(--default-bold-caption2-font-size);
+    font-style: var(--default-bold-caption2-font-style);
+    font-weight: var(--default-bold-caption2-font-weight);
+    letter-spacing: var(--default-bold-caption2-letter-spacing);
+    line-height: var(--default-bold-caption2-line-height);
+  }
+
+  .default-bold-footnote {
+    font-family: var(--default-bold-footnote-font-family);
+    font-size: var(--default-bold-footnote-font-size);
+    font-style: var(--default-bold-footnote-font-style);
+    font-weight: var(--default-bold-footnote-font-weight);
+    letter-spacing: var(--default-bold-footnote-letter-spacing);
+    line-height: var(--default-bold-footnote-line-height);
+  }
+
+  .default-bold-headline {
+    font-family: var(--default-bold-headline-font-family);
+    font-size: var(--default-bold-headline-font-size);
+    font-style: var(--default-bold-headline-font-style);
+    font-weight: var(--default-bold-headline-font-weight);
+    letter-spacing: var(--default-bold-headline-letter-spacing);
+    line-height: var(--default-bold-headline-line-height);
+  }
+
+  .default-bold-largetitle {
+    font-family: var(--default-bold-largetitle-font-family);
+    font-size: var(--default-bold-largetitle-font-size);
+    font-style: var(--default-bold-largetitle-font-style);
+    font-weight: var(--default-bold-largetitle-font-weight);
+    letter-spacing: var(--default-bold-largetitle-letter-spacing);
+    line-height: var(--default-bold-largetitle-line-height);
+  }
+
+  .default-bold-subheadline {
+    font-family: var(--default-bold-subheadline-font-family);
+    font-size: var(--default-bold-subheadline-font-size);
+    font-style: var(--default-bold-subheadline-font-style);
+    font-weight: var(--default-bold-subheadline-font-weight);
+    letter-spacing: var(--default-bold-subheadline-letter-spacing);
+    line-height: var(--default-bold-subheadline-line-height);
+  }
+
+  .default-bold-title1 {
+    font-family: var(--default-bold-title1-font-family);
+    font-size: var(--default-bold-title1-font-size);
+    font-style: var(--default-bold-title1-font-style);
+    font-weight: var(--default-bold-title1-font-weight);
+    letter-spacing: var(--default-bold-title1-letter-spacing);
+    line-height: var(--default-bold-title1-line-height);
+  }
+
+  .default-bold-title2 {
+    font-family: var(--default-bold-title2-font-family);
+    font-size: var(--default-bold-title2-font-size);
+    font-style: var(--default-bold-title2-font-style);
+    font-weight: var(--default-bold-title2-font-weight);
+    letter-spacing: var(--default-bold-title2-letter-spacing);
+    line-height: var(--default-bold-title2-line-height);
+  }
+
+  .default-bold-title3 {
+    font-family: var(--default-bold-title3-font-family);
+    font-size: var(--default-bold-title3-font-size);
+    font-style: var(--default-bold-title3-font-style);
+    font-weight: var(--default-bold-title3-font-weight);
+    letter-spacing: var(--default-bold-title3-letter-spacing);
+    line-height: var(--default-bold-title3-line-height);
+  }
+
+  .default-regular-body {
+    font-family: var(--default-regular-body-font-family);
+    font-size: var(--default-regular-body-font-size);
+    font-style: var(--default-regular-body-font-style);
+    font-weight: var(--default-regular-body-font-weight);
+    letter-spacing: var(--default-regular-body-letter-spacing);
+    line-height: var(--default-regular-body-line-height);
+  }
+
+  .default-regular-callout {
+    font-family: var(--default-regular-callout-font-family);
+    font-size: var(--default-regular-callout-font-size);
+    font-style: var(--default-regular-callout-font-style);
+    font-weight: var(--default-regular-callout-font-weight);
+    letter-spacing: var(--default-regular-callout-letter-spacing);
+    line-height: var(--default-regular-callout-line-height);
+  }
+
+  .default-regular-caption1 {
+    font-family: var(--default-regular-caption1-font-family);
+    font-size: var(--default-regular-caption1-font-size);
+    font-style: var(--default-regular-caption1-font-style);
+    font-weight: var(--default-regular-caption1-font-weight);
+    letter-spacing: var(--default-regular-caption1-letter-spacing);
+    line-height: var(--default-regular-caption1-line-height);
+  }
+
+  .default-regular-caption2 {
+    font-family: var(--default-regular-caption2-font-family);
+    font-size: var(--default-regular-caption2-font-size);
+    font-style: var(--default-regular-caption2-font-style);
+    font-weight: var(--default-regular-caption2-font-weight);
+    letter-spacing: var(--default-regular-caption2-letter-spacing);
+    line-height: var(--default-regular-caption2-line-height);
+  }
+
+  .default-regular-footnote {
+    font-family: var(--default-regular-footnote-font-family);
+    font-size: var(--default-regular-footnote-font-size);
+    font-style: var(--default-regular-footnote-font-style);
+    font-weight: var(--default-regular-footnote-font-weight);
+    letter-spacing: var(--default-regular-footnote-letter-spacing);
+    line-height: var(--default-regular-footnote-line-height);
+  }
+
+  .default-regular-headline {
+    font-family: var(--default-regular-headline-font-family);
+    font-size: var(--default-regular-headline-font-size);
+    font-style: var(--default-regular-headline-font-style);
+    font-weight: var(--default-regular-headline-font-weight);
+    letter-spacing: var(--default-regular-headline-letter-spacing);
+    line-height: var(--default-regular-headline-line-height);
+  }
+
+  .default-regular-largetitle {
+    font-family: var(--default-regular-largetitle-font-family);
+    font-size: var(--extra-large-font-size);
+    font-style: var(--default-regular-largetitle-font-style);
+    font-weight: var(--default-regular-largetitle-font-weight);
+    letter-spacing: var(--default-regular-largetitle-letter-spacing);
+    line-height: var(--default-regular-largetitle-line-height);
+  }
+
+  .default-regular-subheadline {
+    font-family: var(--default-regular-subheadline-font-family);
+    font-size: var(--default-regular-subheadline-font-size);
+    font-style: var(--default-regular-subheadline-font-style);
+    font-weight: var(--default-regular-subheadline-font-weight);
+    letter-spacing: var(--default-regular-subheadline-letter-spacing);
+    line-height: var(--default-regular-subheadline-line-height);
+  }
+
+  .default-regular-title1 {
+    font-family: var(--default-regular-title1-font-family);
+    font-size: var(--default-regular-title1-font-size);
+    font-style: var(--default-regular-title1-font-style);
+    font-weight: var(--default-regular-title1-font-weight);
+    letter-spacing: var(--default-regular-title1-letter-spacing);
+    line-height: var(--default-regular-title1-line-height);
+  }
+
+  .default-regular-title2 {
+    font-family: var(--default-regular-title2-font-family);
+    font-size: var(--default-regular-title2-font-size);
+    font-style: var(--default-regular-title2-font-style);
+    font-weight: var(--default-regular-title2-font-weight);
+    letter-spacing: var(--default-regular-title2-letter-spacing);
+    line-height: var(--default-regular-title2-line-height);
+  }
+
+  .default-regular-title3 {
+    font-family: var(--default-regular-title3-font-family);
+    font-size: var(--default-regular-title3-font-size);
+    font-style: var(--default-regular-title3-font-style);
+    font-weight: var(--default-regular-title3-font-weight);
+    letter-spacing: var(--default-regular-title3-letter-spacing);
+    line-height: var(--default-regular-title3-line-height);
+  }
 }
