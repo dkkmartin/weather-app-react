@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <section className="absolute bottom-0 grid grid-cols-10 grid-rows-1">
+    <section className="absolute bottom-0 grid grid-cols-[repeat(10,minmax(0,50px))] grid-rows-1">
       <svg
         className="col-start-3 col-end-5"
         width="266"
