@@ -3,5 +3,9 @@
 import Button from '@/components/Button';
 
 export default function Home() {
-  return <main className="h-[100dvh] bg-homepage-background bg-cover"></main>;
+  return (
+    <main className="h-screen bg-homepage-background">
+      <Button></Button>
+    </main>
+  );
 }
