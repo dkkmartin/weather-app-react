@@ -1,3 +1,4 @@
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -195,11 +196,28 @@
   --weather-colorsolid2: rgba(31, 29, 71, 1);
   --weather-colorsolid3: rgba(196, 39, 251, 1);
   --weather-colorsolid4: rgba(224, 217, 255, 1);
-  --gradient-linear-darkpurple: linear-gradient(168deg, #2e335a -4.68%, #1c1b33 95.45%);
+  --gradient-linear-darkpurple: linear-gradient(
+    168deg,
+    #2e335a -4.68%,
+    #1c1b33 95.45%
+  );
   --gradient-linear-purple: linear-gradient(90deg, #5936b4 0%, #362a84 103.55%);
-  --gradient-linear-bluepurple: linear-gradient(90deg, #427bd1 1.95%, #c159ec 101.56);
-  --gradient-linear-bluesplit: linear-gradient(180deg, #aec9ff 0%, #aec9ff 54.51%, #083072 54.52%);
-  --gradient-radial: radial-gradient(103.89% 121.8% at 34.94% 108.33%, #f7cbfd 0%, #7758d1 100%);
+  --gradient-linear-bluepurple: linear-gradient(
+    90deg,
+    #427bd1 1.95%,
+    #c159ec 101.56
+  );
+  --gradient-linear-bluesplit: linear-gradient(
+    180deg,
+    #aec9ff 0%,
+    #aec9ff 54.51%,
+    #083072 54.52%
+  );
+  --gradient-radial: radial-gradient(
+    103.89% 121.8% at 34.94% 108.33%,
+    #f7cbfd 0%,
+    #7758d1 100%
+  );
   --gradient-angular: conic-gradient(
     from 180deg at 50% 50%,
     rgba(97, 47, 171, 0) 50.017388463020325deg,
