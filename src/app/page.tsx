@@ -12,14 +12,14 @@ export default function App() {
 
   return (
     <div>
+      <button
+        className="absolute right-4 top-4 bg-transparent border px-2 py-1 rounded-lg font-family-default-regular-body text-white"
+        onClick={handle.enter}
+      >
+        Fullscreen
+      </button>
       <FullScreen handle={handle}>
         <main className="h-[100dvh] bg-homepage-background bg-cover flex flex-col items-center">
-          <button
-            className="absolute right-4 top-4 bg-transparent border px-2 py-1 rounded-lg font-family-default-regular-body text-white"
-            onClick={handle.enter}
-          >
-            Fullscreen
-          </button>
           <Weather />
           <Image
             className="absolute top-[28%]"
