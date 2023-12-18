@@ -16,7 +16,7 @@ export default function Pill({ weather }: { weather: Weather }) {
       </h1>
       <div className="flex flex-col items-center">
         <Image
-          src="/assets/pill/Moon-cloud-fast-wind.svg"
+          src="/assets/weather/sun-cloud-angled-rain.svg"
           width={32}
           height={32}
           alt="Night, cloudy, fast wind"

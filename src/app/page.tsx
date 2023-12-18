@@ -6,6 +6,7 @@ import Navbar from '@/components/frontpage-components/Navbar'
 import Image from 'next/image'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 import Pill from '@/components/frontpage-components/Pill'
+import Drawer from '@/components/frontpage-components/Drawer'
 
 export default function App() {
   const handle = useFullScreenHandle()
@@ -28,9 +29,7 @@ export default function App() {
             width={390}
             height={390}
           ></Image>
-          <Pill
-            weather={{ time: '12 am', percentages: '30', temperature: '19' }}
-          ></Pill>
+          <Drawer />
           <Navbar />
         </main>
       </FullScreen>
