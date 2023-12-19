@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Weather from '@/components/frontpage-components/Weather'
-import Navbar from '@/components/frontpage-components/Navbar'
+import Weather from '@/components/Weather'
+import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
-import Drawer from '@/components/frontpage-components/Drawer'
+import Drawer from '@/components/Drawer'
 import { weather, WeatherResponse } from './api/weatherData'
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const location = { city: 'Copenhagen' }
+    const location = { city: 'roskilde' }
     weather({ location })
       .then((result) => {
         setWeatherData(result)
@@ -25,7 +25,7 @@ export default function App() {
         setError(err.message)
         setLoading(false)
       })
-  }, [])
+  })
 
   return (
     <div>

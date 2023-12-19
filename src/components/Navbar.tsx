@@ -1,15 +1,15 @@
-import Image from 'next/image';
-import { useState } from 'react';
+import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Navbar() {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false)
 
   const handleClick = () => {
-    setIsClicked(true);
+    setIsClicked(true)
     setTimeout(() => {
-      setIsClicked(false);
-    }, 100);
-  };
+      setIsClicked(false)
+    }, 100)
+  }
 
   return (
     <section className="absolute bottom-0 grid grid-cols-[repeat(20,minmax(0px,50px))] grid-rows-1">
@@ -60,7 +60,11 @@ export default function Navbar() {
                 type="matrix"
                 values="0 0 0 0 0.458824 0 0 0 0 0.509804 0 0 0 0 0.956863 0 0 0 1 0"
               />
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_61_8091" />
+              <feBlend
+                mode="normal"
+                in2="BackgroundImageFix"
+                result="effect1_dropShadow_61_8091"
+              />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -179,5 +183,5 @@ export default function Navbar() {
         ></Image>
       </div>
     </section>
-  );
+  )
 }

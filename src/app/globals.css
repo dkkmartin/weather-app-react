@@ -232,6 +232,15 @@
 /* Custom classes */
 
 @layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
   .default-bold-body {
     font-family: var(--default-bold-body-font-family);
     font-size: var(--default-bold-body-font-size);
