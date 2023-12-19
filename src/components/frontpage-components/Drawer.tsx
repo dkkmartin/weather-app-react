@@ -23,7 +23,11 @@ export default function Drawer() {
         className="flex justify-between px-6 text-labeldarksecondary default-bold-subheadline pb-2"
       >
         <button
-          style={isHourlyClicked ? { boxShadow: '0px 5px 5px -5px #fff' } : {}}
+          style={
+            isHourlyClicked
+              ? { boxShadow: '0px 5px 5px -5px var(--weather-colorsolid4)' }
+              : {}
+          }
           onClick={() => {
             setIsWeeklyClicked(false)
             setIsHourlyClicked(true)
@@ -32,7 +36,11 @@ export default function Drawer() {
           Hourly Forecast
         </button>
         <button
-          style={isWeeklyClicked ? { boxShadow: '0px 5px 5px -5px #fff' } : {}}
+          style={
+            isWeeklyClicked
+              ? { boxShadow: '0px 5px 5px -5px var(--weather-colorsolid4)' }
+              : {}
+          }
           onClick={() => {
             setIsHourlyClicked(false)
             setIsWeeklyClicked(true)
@@ -42,7 +50,7 @@ export default function Drawer() {
         </button>
       </section>
       {isHourlyClicked ? (
-        <div className="pt-4 px-4 flex justify-between">
+        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain">
           <Pill
             weather={{ time: '12 am', percentages: '20', temperature: '20' }}
           />
@@ -58,9 +66,18 @@ export default function Drawer() {
           <Pill
             weather={{ time: '16 pm', percentages: '20', temperature: '20' }}
           />
+          <Pill
+            weather={{ time: '16 pm', percentages: '20', temperature: '20' }}
+          />
+          <Pill
+            weather={{ time: '17 pm', percentages: '20', temperature: '20' }}
+          />
+          <Pill
+            weather={{ time: '18 pm', percentages: '20', temperature: '20' }}
+          />
         </div>
       ) : (
-        <div className="pt-4 px-4 flex justify-between">
+        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain">
           <Pill
             weather={{ time: 'Mon', percentages: '20', temperature: '20' }}
           />
@@ -79,6 +96,12 @@ export default function Drawer() {
           />
           <Pill
             weather={{ time: 'Fri', percentages: '20', temperature: '20' }}
+          />
+          <Pill
+            weather={{ time: 'Sat', percentages: '20', temperature: '20' }}
+          />
+          <Pill
+            weather={{ time: 'Sun', percentages: '20', temperature: '20' }}
           />
         </div>
       )}
