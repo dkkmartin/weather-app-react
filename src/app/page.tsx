@@ -21,7 +21,15 @@ export default function App() {
       </button>
       <FullScreen handle={handle}>
         <main className="h-[100dvh] bg-homepage-background bg-cover flex flex-col items-center">
-          <Weather />
+          <Weather
+            weather={{
+              city: 'Amsterdam',
+              temperature: 5,
+              description: 'Mostly cloudy',
+              high: 6,
+              low: 2,
+            }}
+          />
           <Image
             className="absolute top-[28%]"
             src="/assets/house.png"
