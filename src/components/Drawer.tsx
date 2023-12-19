@@ -58,7 +58,7 @@ export default function Drawer({
         <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           <Pill
             weather={{
-              time: weatherData.time.getHours().toString(),
+              time: weatherData.time.getHours().toString() + ':00',
               percentages:
                 weatherData.rain['1h']?.toString().slice(2, 4) ?? 'N/A',
               temperature: weatherData.main.temp.toFixed().toString(),
