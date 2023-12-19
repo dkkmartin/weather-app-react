@@ -1,5 +1,7 @@
 'use server'
 
+import { format, addSeconds } from 'date-fns'
+
 type Location = {
   lat?: number
   lon?: number
@@ -57,6 +59,7 @@ export type WeatherResponse = {
   id: number
   name: string
   cod: number
+  time: Date
 }
 
 export async function weather({ location }: { location: Location }) {
@@ -75,5 +78,13 @@ export async function weather({ location }: { location: Location }) {
   }
 
   const result = (await response.json()) as WeatherResponse
+
+  // Get the current date in UTC
+  const nowUtc = new Date(Date.now() + new Date().getTimezoneOffset() * 60000)
+
+  // Convert timezone shift from UTC to a human-readable format
+  const date = addSeconds(nowUtc, result.timezone)
+  result.time = date
+
   return result
 }

@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 import Drawer from '@/components/Drawer'
-import { weather, WeatherResponse } from './api/weatherData'
+import { weather, WeatherResponse } from './api/weatherCurrent'
 import { useGeolocation } from '@uidotdev/usehooks'
 
 export default function App() {
@@ -80,7 +80,7 @@ export default function App() {
                   low: weatherData?.main.temp_min || 0,
                 }}
               />
-              <Drawer />
+              {weatherData && <Drawer weatherData={weatherData} />}
             </>
           )}
           <Image

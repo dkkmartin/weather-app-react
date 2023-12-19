@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import Pill from './Pill'
+import { WeatherResponse } from '@/app/api/weatherCurrent'
 
-export default function Drawer() {
+export default function Drawer({
+  weatherData,
+}: {
+  weatherData: WeatherResponse
+}) {
   const [isHourlyClicked, setIsHourlyClicked] = useState(true)
   const [isWeeklyClicked, setIsWeeklyClicked] = useState(false)
 
@@ -52,56 +57,18 @@ export default function Drawer() {
       {isHourlyClicked ? (
         <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           <Pill
-            weather={{ time: '12 am', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '13 pm', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '14 pm', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '15 pm', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '16 pm', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '16 pm', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '17 pm', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: '18 pm', percentages: '20', temperature: '20' }}
+            weather={{
+              time: weatherData.time.getHours().toString(),
+              percentages:
+                weatherData.rain['1h']?.toString().slice(2, 4) ?? 'N/A',
+              temperature: weatherData.main.temp.toFixed().toString(),
+            }}
           />
         </div>
       ) : (
         <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           <Pill
             weather={{ time: 'Mon', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: 'Tue', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{
-              time: 'Wed',
-              percentages: '20',
-              temperature: '20',
-            }}
-          />
-          <Pill
-            weather={{ time: 'Thu', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: 'Fri', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: 'Sat', percentages: '20', temperature: '20' }}
-          />
-          <Pill
-            weather={{ time: 'Sun', percentages: '20', temperature: '20' }}
           />
         </div>
       )}

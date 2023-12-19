@@ -11,9 +11,7 @@ export default function Pill({ weather }: { weather: Weather }) {
 
   return (
     <div className="z-10 flex flex-col items-center justify-center border border-weather-colorsolid1 rounded-full bg-weather-colorsolid2 h-[150px] min-w-[60px] max-w-[60px] text-white shadow-lg shadow-black py-4 px-2 gap-4">
-      <h1 className="default-bold-subheadline whitespace-nowrap">
-        {time.toUpperCase()}
-      </h1>
+      <h1 className="default-bold-subheadline whitespace-nowrap">{time}</h1>
       <div className="flex flex-col items-center">
         <Image
           src="/assets/weather/sun-cloud-angled-rain.svg"
