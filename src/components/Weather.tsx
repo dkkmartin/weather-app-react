@@ -17,8 +17,8 @@ export default function Weather({ weather }: { weather: Weather }) {
       </h2>
       <h3 className="default-regular-title3 m-0 opacity-70">{description}</h3>
       <div className="flex justify-evenly">
-        <h4 className="default-regular-title3 m-0">H: {high}°</h4>
-        <h4 className="default-regular-title3 m-0">L: {low}°</h4>
+        <h4 className="default-regular-title3 m-0">H: {high.toFixed()}°</h4>
+        <h4 className="default-regular-title3 m-0">L: {low.toFixed()}°</h4>
       </div>
     </section>
   )

@@ -50,7 +50,7 @@ export default function Drawer() {
         </button>
       </section>
       {isHourlyClicked ? (
-        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain">
+        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           <Pill
             weather={{ time: '12 am', percentages: '20', temperature: '20' }}
           />
@@ -77,7 +77,7 @@ export default function Drawer() {
           />
         </div>
       ) : (
-        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain">
+        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           <Pill
             weather={{ time: 'Mon', percentages: '20', temperature: '20' }}
           />
