@@ -15,7 +15,7 @@ export default function App() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const location = { city: 'amsterdam' }
+    const location = { city: 'Copenhagen' }
     weather({ location })
       .then((result) => {
         setWeatherData(result)
@@ -39,11 +39,11 @@ export default function App() {
         <main className="h-[100dvh] bg-homepage-background bg-cover flex flex-col items-center">
           <Weather
             weather={{
-              city: 'Amsterdam',
-              temperature: 5,
-              description: 'Mostly cloudy',
-              high: 6,
-              low: 2,
+              city: weatherData?.name || '',
+              temperature: weatherData?.main.temp || 0,
+              description: weatherData?.weather[0].description || '',
+              high: weatherData?.main.temp_max || 0,
+              low: weatherData?.main.temp_min || 0,
             }}
           />
           <Image
