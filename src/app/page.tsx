@@ -1,15 +1,31 @@
 'use client'
 
-import React, { useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import Weather from '@/components/frontpage-components/Weather'
 import Navbar from '@/components/frontpage-components/Navbar'
 import Image from 'next/image'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
-import Pill from '@/components/frontpage-components/Pill'
 import Drawer from '@/components/frontpage-components/Drawer'
+import { weather, WeatherResponse } from './api/weatherData'
 
 export default function App() {
   const handle = useFullScreenHandle()
+  const [weatherData, setWeatherData] = useState<WeatherResponse | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const location = { city: 'amsterdam' }
+    weather({ location })
+      .then((result) => {
+        setWeatherData(result)
+        setLoading(false)
+      })
+      .catch((err) => {
+        setError(err.message)
+        setLoading(false)
+      })
+  }, [])
 
   return (
     <div>
