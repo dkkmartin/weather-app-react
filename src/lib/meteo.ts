@@ -18,8 +18,8 @@ export default async function getWeatherData(
   const url = 'https://api.open-meteo.com/v1/forecast'
 
   const params: Params = {
-    latitude: 52.52,
-    longitude: 13.41,
+    latitude: latitude,
+    longitude: longitude,
     current: [
       'temperature_2m',
       'apparent_temperature',
@@ -28,6 +28,7 @@ export default async function getWeatherData(
       'rain',
       'showers',
       'snowfall',
+      'weather_code',
       'cloud_cover',
       'wind_speed_10m',
     ],
@@ -62,8 +63,9 @@ export default async function getWeatherData(
       rain: current.variables(4)!.value(),
       showers: current.variables(5)!.value(),
       snowfall: current.variables(6)!.value(),
-      cloudCover: current.variables(7)!.value(),
-      windSpeed10m: current.variables(8)!.value(),
+      weatherCode: current.variables(7)!.value(),
+      cloudCover: current.variables(8)!.value(),
+      windSpeed10m: current.variables(9)!.value(),
     },
     hourly: {
       time: range(
@@ -79,9 +81,9 @@ export default async function getWeatherData(
       showers: hourly.variables(5)!.valuesArray()!,
       snowfall: hourly.variables(6)!.valuesArray()!,
       snowDepth: hourly.variables(7)!.valuesArray()!,
-      cloudCover: hourly.variables(8)!.valuesArray()!,
-      visibility: hourly.variables(9)!.valuesArray()!,
-      windSpeed10m: hourly.variables(10)!.valuesArray()!,
+      cloudCover: hourly.variables(9)!.valuesArray()!,
+      visibility: hourly.variables(10)!.valuesArray()!,
+      windSpeed10m: hourly.variables(11)!.valuesArray()!,
     },
   }
 

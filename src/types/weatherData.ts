@@ -22,6 +22,7 @@ export interface CurrentData {
   rain: number
   showers: number
   snowfall: number
+  weatherCode: number
   cloudCover: number
   windSpeed10m: number
 }

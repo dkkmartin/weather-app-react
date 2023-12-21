@@ -8,7 +8,10 @@ import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 import Drawer from '@/components/Drawer'
 import { useGeolocation } from '@uidotdev/usehooks'
 import meteo from '@/lib/meteo'
+import { getCity } from '@/lib/city'
 import { WeatherDataType } from '@/types/weatherData'
+import { cityTypes } from '@/types/cityData'
+import getWeatherDescription from '@/lib/weatherCode'
 
 export default function App() {
   const handle = useFullScreenHandle()
@@ -30,11 +33,6 @@ export default function App() {
           setLoading(false)
         })
     }
-    meteo(state.latitude ?? 0, state.longitude ?? 0).then((result) => {
-      setWeatherData(result)
-      setLoading(false)
-      console.log(result)
-    })
   }, [state.loading, state.longitude, state.latitude])
 
   return (
@@ -79,11 +77,12 @@ export default function App() {
             <>
               <Weather
                 weather={{
-                  city: weatherData?.hourly || '',
-                  temperature: weatherData?.main.temp || 0,
-                  description: weatherData?.weather[0].description || '',
-                  high: weatherData?.main.temp_max || 0,
-                  low: weatherData?.main.temp_min || 0,
+                  city: 'Roskilde',
+                  temperature: weatherData?.current.temperature2m || 0,
+                  description: getWeatherDescription(
+                    weatherData?.current.weatherCode
+                  ),
+                  feelsLike: weatherData?.current.apparentTemperature || 0,
                 }}
               />
               {weatherData && <Drawer weatherData={weatherData} />}

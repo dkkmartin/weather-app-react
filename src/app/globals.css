@@ -226,7 +226,7 @@
     #612fab 269.28977251052856deg
   );
   --image-ellipse2-src: url('/assets/button/ellipse-2.svg');
-  --homepage-background-src: url('/assets/homepage-bg.png');
+  --homepage-background-src: url('/assets/homepage-bg.webp');
 }
 
 /* Custom classes */

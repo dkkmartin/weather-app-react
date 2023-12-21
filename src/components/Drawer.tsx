@@ -1,14 +1,25 @@
 import { useState } from 'react'
 import Pill from './Pill'
-import { WeatherResponse } from '@/lib/weatherCurrent'
+import { WeatherDataType } from '@/types/weatherData'
 
 export default function Drawer({
   weatherData,
 }: {
-  weatherData: WeatherResponse
+  weatherData: WeatherDataType
 }) {
   const [isHourlyClicked, setIsHourlyClicked] = useState(true)
   const [isWeeklyClicked, setIsWeeklyClicked] = useState(false)
+
+  const now = new Date()
+  const currentHour = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    now.getHours()
+  )
+  const currentIndex = weatherData.hourly.time.findIndex(
+    (time) => +time >= +currentHour
+  )
 
   return (
     <section
@@ -56,14 +67,22 @@ export default function Drawer({
       </section>
       {isHourlyClicked ? (
         <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
-          <Pill
-            weather={{
-              time: weatherData.time.getHours().toString() + ':00',
-              percentages:
-                weatherData.rain['1h']?.toString().slice(2, 4) ?? 'N/A',
-              temperature: weatherData.main.temp.toFixed().toString(),
-            }}
-          />
+          {weatherData.hourly.time
+            .slice(currentIndex, currentIndex + 24)
+            .map((time, index) => (
+              <Pill
+                key={index}
+                weather={{
+                  time: time.toTimeString().slice(0, 5),
+                  percentages:
+                    weatherData.hourly.precipitationProbability[
+                      index
+                    ].toFixed(),
+                  temperature:
+                    weatherData.hourly.temperature2m[index].toFixed(),
+                }}
+              />
+            ))}
         </div>
       ) : (
         <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
