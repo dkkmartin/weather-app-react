@@ -1,25 +1,40 @@
 import { fetchWeatherApi } from 'openmeteo'
-import { WeatherData } from '../types/weatherData'
+import { WeatherDataType } from '../types/weatherData'
 
 interface Params {
   latitude: number
   longitude: number
+  current: string[]
   hourly: string[]
 }
 
-const range = (start: number, stop: number, step: number): number[] =>
+const range = (start: number, stop: number, step: number) =>
   Array.from({ length: (stop - start) / step }, (_, i) => start + i * step)
 
-export default async function meteo(
+export default async function getWeatherData(
   latitude: number,
   longitude: number
-): Promise<WeatherData> {
+): Promise<WeatherDataType> {
+  const url = 'https://api.open-meteo.com/v1/forecast'
+
   const params: Params = {
     latitude: 52.52,
     longitude: 13.41,
+    current: [
+      'temperature_2m',
+      'apparent_temperature',
+      'is_day',
+      'precipitation',
+      'rain',
+      'showers',
+      'snowfall',
+      'cloud_cover',
+      'wind_speed_10m',
+    ],
     hourly: [
       'temperature_2m',
       'relative_humidity_2m',
+      'apparent_temperature',
       'precipitation_probability',
       'rain',
       'showers',
@@ -30,33 +45,26 @@ export default async function meteo(
       'wind_speed_10m',
     ],
   }
+  const responses = await fetchWeatherApi(url, params)
+  const response = responses[0]
 
-  const url: string = 'https://api.open-meteo.com/v1/forecast'
+  const utcOffsetSeconds = response.utcOffsetSeconds()
+  const current = response.current()!
+  const hourly = response.hourly()!
 
-  const response: { utcOffsetSeconds: () => number; hourly: () => any }[] =
-    await fetchWeatherApi(url, params)
-
-  const utcOffsetSeconds: number = response[0].utcOffsetSeconds()
-
-  const hourly: any = response[0].hourly()!
-
-  interface WeatherData {
-    hourly: {
-      time: Date[]
-      temperature2m: number[]
-      relativeHumidity2m: number[]
-      precipitationProbability: number[]
-      rain: number[]
-      showers: number[]
-      snowfall: number[]
-      snowDepth: number[]
-      cloudCover: number[]
-      visibility: number[]
-      windSpeed10m: number[]
-    }
-  }
-
-  const weatherData: WeatherData = {
+  const weatherData: WeatherDataType = {
+    current: {
+      time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),
+      temperature2m: current.variables(0)!.value(),
+      apparentTemperature: current.variables(1)!.value(),
+      isDay: current.variables(2)!.value(),
+      precipitationProbability: current.variables(3)!.value(),
+      rain: current.variables(4)!.value(),
+      showers: current.variables(5)!.value(),
+      snowfall: current.variables(6)!.value(),
+      cloudCover: current.variables(7)!.value(),
+      windSpeed10m: current.variables(8)!.value(),
+    },
     hourly: {
       time: range(
         Number(hourly.time()),
@@ -65,31 +73,16 @@ export default async function meteo(
       ).map((t) => new Date((t + utcOffsetSeconds) * 1000)),
       temperature2m: hourly.variables(0)!.valuesArray()!,
       relativeHumidity2m: hourly.variables(1)!.valuesArray()!,
-      precipitationProbability: hourly.variables(2)!.valuesArray()!,
-      rain: hourly.variables(3)!.valuesArray()!,
-      showers: hourly.variables(4)!.valuesArray()!,
-      snowfall: hourly.variables(5)!.valuesArray()!,
-      snowDepth: hourly.variables(6)!.valuesArray()!,
-      cloudCover: hourly.variables(7)!.valuesArray()!,
-      visibility: hourly.variables(8)!.valuesArray()!,
-      windSpeed10m: hourly.variables(9)!.valuesArray()!,
+      apparentTemperature: hourly.variables(2)!.valuesArray()!,
+      precipitationProbability: hourly.variables(3)!.valuesArray()!,
+      rain: hourly.variables(4)!.valuesArray()!,
+      showers: hourly.variables(5)!.valuesArray()!,
+      snowfall: hourly.variables(6)!.valuesArray()!,
+      snowDepth: hourly.variables(7)!.valuesArray()!,
+      cloudCover: hourly.variables(8)!.valuesArray()!,
+      visibility: hourly.variables(9)!.valuesArray()!,
+      windSpeed10m: hourly.variables(10)!.valuesArray()!,
     },
-  }
-
-  for (let i = 0; i < weatherData.hourly.time.length; i++) {
-    console.log(
-      weatherData.hourly.time[i].toISOString(),
-      weatherData.hourly.temperature2m[i],
-      weatherData.hourly.relativeHumidity2m[i],
-      weatherData.hourly.precipitationProbability[i],
-      weatherData.hourly.rain[i],
-      weatherData.hourly.showers[i],
-      weatherData.hourly.snowfall[i],
-      weatherData.hourly.snowDepth[i],
-      weatherData.hourly.cloudCover[i],
-      weatherData.hourly.visibility[i],
-      weatherData.hourly.windSpeed10m[i]
-    )
   }
 
   return weatherData

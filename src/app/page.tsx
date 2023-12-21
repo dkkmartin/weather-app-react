@@ -6,30 +6,36 @@ import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 import Drawer from '@/components/Drawer'
-import { weather, WeatherResponse } from '../lib/weatherCurrent'
 import { useGeolocation } from '@uidotdev/usehooks'
+import meteo from '@/lib/meteo'
+import { WeatherDataType } from '@/types/weatherData'
 
 export default function App() {
   const handle = useFullScreenHandle()
-  const [weatherData, setWeatherData] = useState<WeatherResponse | null>(null)
+  const [weatherData, setWeatherData] = useState<WeatherDataType | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const state = useGeolocation()
 
   useEffect(() => {
     if (!state.loading) {
-      const location = { lat: state.latitude ?? 0, lon: state.longitude ?? 0 }
-      weather({ location })
+      meteo(state.latitude ?? 0, state.longitude ?? 0)
         .then((result) => {
           setWeatherData(result)
           setLoading(false)
+          console.log(result)
         })
-        .catch((err) => {
-          setError(err.message)
+        .catch((error) => {
+          setError(error)
           setLoading(false)
         })
     }
-  }, [state.latitude, state.loading, state.longitude])
+    meteo(state.latitude ?? 0, state.longitude ?? 0).then((result) => {
+      setWeatherData(result)
+      setLoading(false)
+      console.log(result)
+    })
+  }, [state.loading, state.longitude, state.latitude])
 
   return (
     <div>
@@ -73,7 +79,7 @@ export default function App() {
             <>
               <Weather
                 weather={{
-                  city: weatherData?.name || '',
+                  city: weatherData?.hourly || '',
                   temperature: weatherData?.main.temp || 0,
                   description: weatherData?.weather[0].description || '',
                   high: weatherData?.main.temp_max || 0,
