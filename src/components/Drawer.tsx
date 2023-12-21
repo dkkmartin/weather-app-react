@@ -86,9 +86,21 @@ export default function Drawer({
         </div>
       ) : (
         <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
-          <Pill
-            weather={{ time: 'Mon', percentages: '20', temperature: '20' }}
-          />
+          {weatherData.daily.time.map((time, index) => (
+            <Pill
+              key={index}
+              weather={{
+                time: time.toDateString().slice(0, 3),
+                percentages:
+                  weatherData.daily.precipitationSum[index].toFixed(),
+                temperature: `${weatherData.daily.temperature2mMax[
+                  index
+                ].toFixed()} ${weatherData.daily.temperature2mMin[
+                  index
+                ].toFixed()}`,
+              }}
+            />
+          ))}
         </div>
       )}
     </section>

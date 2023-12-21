@@ -33,7 +33,7 @@ export default function App() {
           setLoading(false)
         })
     }
-  }, [state.loading, state.longitude, state.latitude])
+  }, [state.loading])
 
   return (
     <div>
@@ -80,7 +80,7 @@ export default function App() {
                   city: 'Roskilde',
                   temperature: weatherData?.current.temperature2m || 0,
                   description: getWeatherDescription(
-                    weatherData?.current.weatherCode
+                    weatherData?.current.weatherCode || 100
                   ),
                   feelsLike: weatherData?.current.apparentTemperature || 0,
                 }}

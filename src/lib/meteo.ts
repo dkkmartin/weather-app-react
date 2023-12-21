@@ -6,6 +6,8 @@ interface Params {
   longitude: number
   current: string[]
   hourly: string[]
+  daily: string[]
+  timezone: string
 }
 
 const range = (start: number, stop: number, step: number) =>
@@ -45,6 +47,13 @@ export default async function getWeatherData(
       'visibility',
       'wind_speed_10m',
     ],
+    daily: [
+      'weather_code',
+      'temperature_2m_max',
+      'temperature_2m_min',
+      'precipitation_sum',
+    ],
+    timezone: 'auto',
   }
   const responses = await fetchWeatherApi(url, params)
   const response = responses[0]
@@ -52,6 +61,7 @@ export default async function getWeatherData(
   const utcOffsetSeconds = response.utcOffsetSeconds()
   const current = response.current()!
   const hourly = response.hourly()!
+  const daily = response.daily()!
 
   const weatherData: WeatherDataType = {
     current: {
@@ -84,6 +94,17 @@ export default async function getWeatherData(
       cloudCover: hourly.variables(9)!.valuesArray()!,
       visibility: hourly.variables(10)!.valuesArray()!,
       windSpeed10m: hourly.variables(11)!.valuesArray()!,
+    },
+    daily: {
+      time: range(
+        Number(daily.time()),
+        Number(daily.timeEnd()),
+        daily.interval()
+      ).map((t) => new Date((t + utcOffsetSeconds) * 1000)),
+      weatherCode: daily.variables(0)!.valuesArray()!,
+      temperature2mMax: daily.variables(1)!.valuesArray()!,
+      temperature2mMin: daily.variables(2)!.valuesArray()!,
+      precipitationSum: daily.variables(3)!.valuesArray()!,
     },
   }
 

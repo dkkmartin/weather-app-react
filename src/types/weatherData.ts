@@ -27,7 +27,16 @@ export interface CurrentData {
   windSpeed10m: number
 }
 
+export interface dailyData {
+  time: Date[]
+  weatherCode: Float32Array
+  temperature2mMax: Float32Array
+  temperature2mMin: Float32Array
+  precipitationSum: Float32Array
+}
+
 export interface WeatherDataType {
   hourly: HourlyData
   current: CurrentData
+  daily: dailyData
 }
