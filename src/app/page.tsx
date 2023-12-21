@@ -6,7 +6,7 @@ import Navbar from '@/components/Navbar'
 import Image from 'next/image'
 import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 import Drawer from '@/components/Drawer'
-import { weather, WeatherResponse } from './api/weatherCurrent'
+import { weather, WeatherResponse } from '../lib/weatherCurrent'
 import { useGeolocation } from '@uidotdev/usehooks'
 
 export default function App() {

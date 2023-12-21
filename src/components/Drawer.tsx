@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Pill from './Pill'
-import { WeatherResponse } from '@/app/api/weatherCurrent'
+import { WeatherResponse } from '@/lib/weatherCurrent'
 
 export default function Drawer({
   weatherData,
