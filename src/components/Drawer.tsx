@@ -10,6 +10,7 @@ export default function Drawer({
   const [isHourlyClicked, setIsHourlyClicked] = useState(true)
   const [isWeeklyClicked, setIsWeeklyClicked] = useState(false)
 
+  // Find the index of the current hour in the hourly time array of weather data
   const now = new Date()
   const currentHour = new Date(
     now.getFullYear(),
@@ -18,13 +19,13 @@ export default function Drawer({
     now.getHours()
   )
   const currentIndex = weatherData.hourly.time.findIndex(
-    (time) => +time >= +currentHour
+    (time) => time >= currentHour
   )
 
   return (
     <section
       style={{ borderTop: '1px solid var(--weather-colorsolid1)' }}
-      className="z-10 bg-gradient-linear-darkpurple w-full rounded-3xl shadow-xl overflow-hidden"
+      className="z-10 bg-gradient-linear-darkpurple w-full rounded-3xl shadow-xl overflow-hidden min-h-[300px]"
     >
       <section
         style={{ boxShadow: 'inset 0px 10px 10px -10px #fff' }}
@@ -66,9 +67,9 @@ export default function Drawer({
         </button>
       </section>
       {isHourlyClicked ? (
-        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
+        <div className="pt-4 px-4 h-full flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           {weatherData.hourly.time
-            .slice(currentIndex, currentIndex + 24)
+            .slice(currentIndex + 1, currentIndex + 25)
             .map((time, index) => (
               <Pill
                 key={index}
@@ -85,7 +86,7 @@ export default function Drawer({
             ))}
         </div>
       ) : (
-        <div className="pt-4 px-4 flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
+        <div className="pt-4 px-4 h-full flex justify-between overflow-scroll gap-6 overscroll-contain no-scrollbar">
           {weatherData.daily.time.map((time, index) => (
             <Pill
               key={index}
@@ -95,7 +96,7 @@ export default function Drawer({
                   weatherData.daily.precipitationSum[index].toFixed(),
                 temperature: `${weatherData.daily.temperature2mMax[
                   index
-                ].toFixed()} ${weatherData.daily.temperature2mMin[
+                ].toFixed()}° ${weatherData.daily.temperature2mMin[
                   index
                 ].toFixed()}`,
               }}

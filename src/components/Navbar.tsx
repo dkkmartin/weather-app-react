@@ -12,7 +12,7 @@ export default function Navbar() {
   }
 
   return (
-    <section className="absolute bottom-0 grid grid-cols-[repeat(20,minmax(0px,50px))] grid-rows-1">
+    <section className=" z-50 absolute bottom-0 grid grid-cols-[repeat(20,minmax(0px,50px))] grid-rows-1">
       <div
         className="absolute bottom-0 left-1/2 h-[100px] overflow-hidden"
         style={{ transform: 'translate(-50%, 0%)' }}

@@ -9,20 +9,20 @@ import Drawer from '@/components/Drawer'
 import { useGeolocation } from '@uidotdev/usehooks'
 import meteo from '@/lib/meteo'
 import { getCity } from '@/lib/city'
-import { WeatherDataType } from '@/types/weatherData'
 import { cityTypes } from '@/types/cityData'
+import { WeatherDataType } from '@/types/weatherData'
 import getWeatherDescription from '@/lib/weatherCode'
 
 export default function App() {
   const handle = useFullScreenHandle()
+  const geoData = useGeolocation()
   const [weatherData, setWeatherData] = useState<WeatherDataType | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const state = useGeolocation()
 
   useEffect(() => {
-    if (!state.loading) {
-      meteo(state.latitude ?? 0, state.longitude ?? 0)
+    if (!geoData.loading) {
+      meteo(geoData.latitude ?? 0, geoData.longitude ?? 0)
         .then((result) => {
           setWeatherData(result)
           setLoading(false)
@@ -33,7 +33,7 @@ export default function App() {
           setLoading(false)
         })
     }
-  }, [state.loading])
+  }, [geoData.loading, geoData.latitude, geoData.longitude])
 
   return (
     <div>
